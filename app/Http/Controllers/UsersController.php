@@ -37,7 +37,6 @@ class UsersController extends Controller
 
     public function remove(User $user)
     {
-
         $user->delete();
         $response = ['message' => 'Usuário excluído com sucesso!'];
 
