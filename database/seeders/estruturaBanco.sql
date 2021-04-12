@@ -1,11 +1,3 @@
-CREATE TABLE Usuarios(
-	id_usuario SERIAL CONSTRAINT pk_id_usuario PRIMARY KEY,
-	nome VARCHAR(255) NOT NULL,
-	email VARCHAR(255) NOT NULL,
-	telefone VARCHAR(20) NOT NULL,
-	data_nascimento DATE NOT NULL,
-	senha VARCHAR(255) NOT NULL
-);
 
 CREATE TABLE Posts (
 	id_post SERIAL CONSTRAINT pk_id_post PRIMARY KEY,
@@ -15,8 +7,8 @@ CREATE TABLE Posts (
 	status BOOLEAN NOT NULL,
 	longitude VARCHAR(255) NOT NULL,
 	latitude VARCHAR(255) NOT NULL,
-	
-	FOREIGN KEY (id_usuario) REFERENCES Usuarios (id_usuario) 
+
+	FOREIGN KEY (id_usuario) REFERENCES users (id)
 );
 
 CREATE TABLE Comentarios (
@@ -25,7 +17,7 @@ CREATE TABLE Comentarios (
 	id_post INTEGER NOT NULL,
 	descricao VARCHAR(255),
 	data DATE,
-	
-	FOREIGN KEY (id_usuario) REFERENCES Usuarios (id_usuario),
-	FOREIGN KEY (id_post) REFERENCES Posts (id_post) 
+
+	FOREIGN KEY (id_usuario) REFERENCES users (id),
+	FOREIGN KEY (id_post) REFERENCES Posts (id_post)
 );

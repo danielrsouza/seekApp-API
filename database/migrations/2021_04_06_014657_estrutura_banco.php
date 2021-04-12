@@ -27,6 +27,7 @@ class EstruturaBanco extends Migration
      */
     public function down()
     {
-        
+        Schema::dropIfExists('comentarios');
+        Schema::dropIfExists('posts');
     }
 }
