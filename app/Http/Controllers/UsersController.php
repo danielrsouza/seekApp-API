@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
     public function index() {
-        return User::all();
+        return Auth::user();
     }
 
     public function store(Request $request) {
@@ -17,7 +19,7 @@ class UsersController extends Controller
             'email' => $request->input('email'),
             'telefone' => $request->input('telefone'),
             'data_nascimento' => $request->input('data_nascimento'),
-            'password' => $request->input('password'),
+            'password' => Hash::make($request->input('password'))
         ]);
 
         return $user;
