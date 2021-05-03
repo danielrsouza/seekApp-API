@@ -25,8 +25,6 @@ class ComentariosController extends Controller
     {
         $comentario->update([
             'descricao' => $request->input('descricao'),
-            'imagem' => $request->input('imagem'),
-            'status' => $request->input('status'),
         ]);
 
         return $comentario;
@@ -39,5 +37,15 @@ class ComentariosController extends Controller
         $response = ['message' => 'Comentário excluído com sucesso!'];
 
         return $response;
+    }
+
+    public function show($id)
+    {
+        return Comentario::find($id);
+    }
+
+    public function buscaComentariosPeloPost($id)
+    {
+        return Comentario::where('id_post', $id)->get();
     }
 }

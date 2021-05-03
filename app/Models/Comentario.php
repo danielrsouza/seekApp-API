@@ -9,6 +9,8 @@ class Comentario extends Model
 {
     use HasFactory;
 
+    protected $with = ['users'];
+
     protected $fillable = [
         'id',
         'id_usuario',
@@ -17,4 +19,9 @@ class Comentario extends Model
         'updated_at',
         'created_at'
     ];
+
+    public function users()
+    {
+        return $this->hasOne(User::class, 'id', 'id_usuario');
+    }
 }

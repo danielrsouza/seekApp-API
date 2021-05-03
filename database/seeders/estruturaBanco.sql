@@ -1,6 +1,6 @@
 
 CREATE TABLE Posts (
-	id SERIAL CONSTRAINT pk_id_post PRIMARY KEY,
+	id integer CONSTRAINT pk_id_post PRIMARY KEY AUTO INCREMENT ,
 	id_usuario INTEGER NOT NULL,
 	descricao VARCHAR(255) NOT NULL,
 	imagem VARCHAR(255) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE Posts (
 );
 
 CREATE TABLE Comentarios (
-	id SERIAL CONSTRAINT pk_id_comentario PRIMARY KEY,
+	id integer CONSTRAINT pk_id_comentario PRIMARY KEY AUTO INCREMENT,
 	id_usuario INTEGER NOT NULL,
 	id_post INTEGER NOT NULL,
 	descricao VARCHAR(255),

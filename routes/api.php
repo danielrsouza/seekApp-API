@@ -22,15 +22,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::middleware(['auth:api'])->group(function() {
     Route::get('/users', [UsersController::class, "index"]);
+    Route::get('/users/{id}', [UsersController::class, "show"]);
+
     Route::post('/users/{user}', [UsersController::class, "update"]);
     Route::delete('/users/{user}', [UsersController::class, "remove"]);
 
     Route::get('/posts', [PostsController::class, "index"]);
+    Route::get('/posts/{id}', [PostsController::class, "show"]);
     Route::post('/posts', [PostsController::class, "store"]);
     Route::post('/posts/{post}', [PostsController::class, "update"]);
-    Route::delete('/posts/{post}', [PostsController::class, "remove"]);
+    Route::delete('/posts/{id}', [PostsController::class, "remove"]);
 
     Route::get('/comentarios', [ComentariosController::class, "index"]);
+    Route::get('/comentarios/{id}', [ComentariosController::class, "show"]);
+    Route::get('/comentarios/post/{id}', [ComentariosController::class, "buscaComentariosPeloPost"]);
     Route::post('/comentarios', [ComentariosController::class, "store"]);
     Route::post('/comentarios/{comentario}', [ComentariosController::class, "update"]);
     Route::delete('/comentarios/{comentario}', [ComentariosController::class, "remove"]);

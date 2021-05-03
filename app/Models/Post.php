@@ -9,6 +9,8 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $with = ['user', 'comentarios'];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -21,7 +23,15 @@ class Post extends Model
         'status',
         'longitude',
         'latitude',
-        'updated_at',
-        'created_at'
     ];
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'id_usuario');
+    }
+
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class, 'id_post', 'id');
+    }
 }

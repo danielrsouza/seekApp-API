@@ -44,4 +44,8 @@ class UsersController extends Controller
 
         return $response;
     }
+    public function show($id)
+    {
+        return User::find($id);
+    }
 }
